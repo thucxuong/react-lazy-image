@@ -32,13 +32,13 @@ type PropType = {
  * @type {PropTypes}
  */
 const defaultProps: PropType = {
-  onLayout: () => {},
-  onError: () => {},
-  onLoad: () => {},
-  onLoadEnd: () => {},
-  onLoadStart: () => {},
-  onAbort: () => {},
-  onProgress: () => {},
+  onLayout: () => { },
+  onError: () => { },
+  onLoad: () => { },
+  onLoadEnd: () => { },
+  onLoadStart: () => { },
+  onAbort: () => { },
+  onProgress: () => { },
   offset: 0,
   defaultSource,
   type: '*',
@@ -90,7 +90,6 @@ class Image extends Component {
     this.props.onLayout({ element: this });
 
     this.request = new XMLHttpRequest();
-    this.request.responseType = 'arraybuffer';
 
     window.addEventListener('scroll', this.checkViewport);
     this.checkViewport();
@@ -138,6 +137,7 @@ class Image extends Component {
 
     // open AJAX request
     this.request.open('GET', this.props.source);
+    this.request.responseType = 'arraybuffer';
     // send request
     return this.request.send();
   }
@@ -347,7 +347,7 @@ class Image extends Component {
           [propName]: this.props[propName],
         }),
         {},
-      );
+    );
   }
 
 
